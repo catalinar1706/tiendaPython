@@ -1,0 +1,54 @@
+{% extends "index.html" %}
+
+{% block encabezado %}
+    {% include "encabezado.html" %}
+{% endblock %}
+
+{% block menu %}
+    {% include "menu.html" %}
+{% endblock %}
+
+{% block contenido %}
+    <script>obtenerProductos()</script>
+    <div class="container">
+        <div class="w-75" style="margin: 0 auto">
+            <h3 class="text-center fw-bold">Lista de Productos</h3>
+            <a href="/agregar"><button class="btn btn-success">Agregar</button></a>           
+            <table id="tblProductos" class="table table-bordered mt-2">
+                <thead class="table-secondary">
+                    <tr class="text-center">
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Categoria</th>
+                        <th>Foto</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="datosProductos">
+                    {% for producto in productos %}
+                    <tr>
+                        <td class="text-center">{{producto['codigo']}}</td>
+                        <td>{{producto['nombre']}}</td>
+                        <td class="text-end">{{producto['precio']}}</td>
+                        <td>{{producto['categoria']}}</td>
+                        <td class="text-center">
+                            <img src="../static/imagenes/{{producto['foto']}}" alt="" width="40" height="40">
+                        </td>
+                        <td class="text-center" style="font-size: x-large;">
+                            <a href="/consultar/{{producto['_id']}}"><i class="fa fa-refresh text-warning"></i></a>
+                            <i class="fa fa-trash text-danger" onclick="eliminar('{{producto['_id']}}')"></i>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div>{{mensaje}}</div>
+        </div>
+    </div>  
+{%endblock %}
+
+{% block piepagina %} 
+    {% include "piePagina.html" %} 
+{%endblock %}
+

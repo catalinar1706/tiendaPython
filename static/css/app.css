@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    height: 130px;
+    width: 100%;
+}
+
+section {
+    min-height: 400px;
+    width: 100%;
+}
+
+nav {
+    height: 50px;
+    width: 100%;
+
+}
+
+footer {
+    height: 130px;
+    width: 100%;
+    
+
+}
+
+.frmlogin{
+
+    border-radius: 5px;
+    background-color: rgb(204, 228, 204);
+    width: 30%;
+   
+}

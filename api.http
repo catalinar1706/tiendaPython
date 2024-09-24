@@ -1,0 +1,22 @@
+
+GET http://127.0.0.1:8000/api/listarProductos
+
+
+
+post http://127.0.0.1:8000/api/agregar
+
+{
+    "codigo":33,
+    "nombre":"Nevera",
+    "precio":2950000,
+    "categotria":"Electrodomestico",
+    "foto": ""
+}
+
+
+GET http://127.0.0.1:8000/api/consultar/66e4fe8876edc0abfc4a673b
+
+#otra
+
+
+

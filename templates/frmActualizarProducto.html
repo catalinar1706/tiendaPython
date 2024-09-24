@@ -1,0 +1,62 @@
+{% extends "index.html" %}
+
+{% block encabezado %}
+    {% include "encabezado.html" %}
+{% endblock %}
+
+{% block menu %}
+    {% include "menu.html" %}
+{% endblock %}
+
+{% block contenido %}
+    <div class="container">
+        <h1 class="text-center fw-bold"></h1>
+        <div class="w-50" style="margin: 0 auto">
+            <form action="/actualizar" method="post" enctype="multipart/form-data" class="was-validated">
+                <div class="mt-2">
+                    <label for="txtCodigo" class="fw-bold">Codigo</label>
+                    <input type="text" name="txtCodigo" id="" value="{{producto['codigo']}}" class="form-control" required>
+                </div>
+                <div class="mt-2">
+                    <label for="txtNombre" class="fw-bold">Nombre:</label>
+                    <input type="text" name="txtNombre" id="" value="{{producto['nombre']}}" class="form-control" required>
+                </div>
+                <div class="mt-2">
+                    <label for="txtPrecio" class="fw-bold">Precio</label>
+                    <input type="number" name="txtPrecio" id="" value="{{producto['precio']}}" class="form-control" required>
+                </div>
+                <div class="mt-2">
+                    <label for="cbCategoria" class="fw-bold">Categoria</label>
+                    <select name="cbCategoria" id="cbCategoria" class="form-select" required>
+                        <option value="">Seleccione</option>
+                        <option value="Electrodomestico">Electrodomestico</option>
+                        <option value="Ropa">Prendas</option>
+                        <option value="Calzado">Calzado</option>
+                    </select>
+                </div>
+                <div class="mt-2">
+                    <label for="fileFoto" class="fw-bold">Foto</label> 
+                    <input type="file" name="fileFoto" id="" class="form-control" 
+                    value="../static/imagenes/{{producto['foto']}}">
+                </div>
+                <div class="mt-3 text-center">
+                    <img id="imagenProducto" src="../static/imagenes/{{producto['foto']}}" width="100" height="100">
+                </div>
+                <!-- campo oculto para guardar el id del producto, que será utilizado para poder actualizar -->
+                <input type="hidden" name="id" id="id" value="{{producto['_id']}}">
+                <div class="mt-2">
+                    <button class="btn btn-success">Actualizar</button>
+                    <a href="/listarProductos"> <button type="button" class="btn btn-secondary">Eliminar</button></a>
+                </div>
+            </form>
+            <script>
+                document.getElementById("cbCategoria").value = "{{producto['categoria']}}"; 
+            </script>
+            <div class="text-center fw-bold">{{mensaje}}</div>
+        </div>
+    </div> 
+{%endblock %}
+
+{% block piepagina %} 
+    {% include "piePagina.html" %} 
+{%endblock %}
